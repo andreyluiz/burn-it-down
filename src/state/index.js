@@ -26,6 +26,11 @@ const reducer = duck.createReducer({
   },
 });
 
-const reduxStore = createStore(reducer);
+/* eslint-disable no-underscore-dangle */
+const reduxStore = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+/* eslint-enable */
 
 export const store = new Revue(Vue, reduxStore);
