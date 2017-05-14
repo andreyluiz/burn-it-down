@@ -38,7 +38,7 @@ export default {
         days: parseInt(this.days, 10),
         points: parseInt(this.points, 10),
       }));
-      // TODO go to chart
+      this.$router.push('chart');
     },
   },
 };

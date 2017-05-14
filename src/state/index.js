@@ -9,6 +9,10 @@ const SUBMIT_DATA = duck.defineType('SUBMIT_DATA');
 
 export const submitData = duck.createAction(SUBMIT_DATA);
 
+const initialState = {
+  optimal: [],
+};
+
 const reducer = duck.createReducer({
   [SUBMIT_DATA]: (state, { payload }) => {
     const { days } = payload;
@@ -24,7 +28,7 @@ const reducer = duck.createReducer({
       optimal,
     };
   },
-});
+}, initialState);
 
 /* eslint-disable no-underscore-dangle */
 const reduxStore = createStore(
