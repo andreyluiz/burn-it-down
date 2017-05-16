@@ -11,21 +11,26 @@ export const submitData = duck.createAction(SUBMIT_DATA);
 
 const initialState = {
   optimal: [],
+  realized: [],
 };
 
 const reducer = duck.createReducer({
   [SUBMIT_DATA]: (state, { payload }) => {
     const { days } = payload;
-    let { points } = payload;
+    const { points } = payload;
+    let optimalPoints = points;
     const pointsPerDay = points / days;
     const optimal = [points];
-    while (points > 0) {
-      points -= pointsPerDay;
-      optimal.push(points);
+    const realized = [points];
+    while (optimalPoints > 0) {
+      optimalPoints -= pointsPerDay;
+      optimal.push(optimalPoints);
+      realized.push(points);
     }
     return {
       ...state,
       optimal,
+      realized,
     };
   },
 }, initialState);
