@@ -6,7 +6,7 @@
         {{ `Day ${day + 1}` }}
       </option>
     </select>
-    <input name="points" v-model="points" placeholder="Points spent..." />
+    <input name="points" v-model="points" placeholder="Points spent..." autofocus />
     <button type="submit">Set</button>
   </form>
 </template>
@@ -18,7 +18,7 @@ export default {
   name: 'chart-form',
   data() {
     return {
-      day: -1,
+      day: 0,
       optimal: this.$select('optimal'),
       points: null,
     };
@@ -35,6 +35,10 @@ export default {
         day: parseInt(this.day, 10),
         points: parseInt(this.points, 10),
       }));
+      if (this.day < (this.optimal.length - 1)) {
+        this.day = this.day + 1;
+      }
+      this.points = null;
     },
   },
 };

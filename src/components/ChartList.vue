@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table id="table">
     <thead>
       <tr>
         <th>Day</th>
@@ -34,3 +34,21 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#table {
+  width: 100%;
+  color: #2c3e50;
+  margin: 24px 0;
+  border-collapse: collapse;
+
+  td, th {
+    padding: 8px 4px;
+  }
+
+  tr:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+}
+</style>
