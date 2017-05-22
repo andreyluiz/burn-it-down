@@ -1,9 +1,7 @@
 <template>
   <div id="chart">
-    <div class="form">
+    <div class="data">
       <chart-form />
-    </div>
-    <div class="list">
       <chart-list />
     </div>
     <div class="burndown">
@@ -63,12 +61,17 @@ export default {
 <style lang="scss" scoped>
 #chart {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 0 100px;
 
-  .form, .list, .burndown {
-    flex: 1 1 auto;
-    align-self: center;
+  .burndown {
+    flex: 1 1 60%;
+    margin-left: 12px;
+  }
+
+  .data {
+    flex: 1 1 40%;
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>
