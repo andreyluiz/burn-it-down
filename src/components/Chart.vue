@@ -61,14 +61,16 @@ export default {
 <style lang="scss" scoped>
 #chart {
   display: flex;
+  margin: 0 auto;
+  max-width: 1000px;
 
   .burndown {
-    flex: 1 1 60%;
+    flex: 1 1 70%;
     margin-left: 12px;
   }
 
   .data {
-    flex: 1 1 40%;
+    flex: 1 1 30%;
     margin: 24px;
     display: flex;
     flex-direction: column;
