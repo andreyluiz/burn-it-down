@@ -33,7 +33,7 @@ export default {
       e.preventDefault();
       store.dispatch(setPoints({
         day: parseInt(this.day, 10),
-        points: parseInt(this.points, 10),
+        points: parseInt(this.points, 10) || 0,
       }));
       if (this.day < (this.optimal.length - 1)) {
         this.day = this.day + 1;

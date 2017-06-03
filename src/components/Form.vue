@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="actions">
-        <button type="submit">Go!</button>
+        <button :disabled="!days || !points" type="submit">Go!</button>
       </div>
     </form>
   </div>
@@ -27,18 +27,26 @@ import { store, submitData } from '../state';
 
 export default {
   name: 'form',
-  data: () => ({
-    days: '',
-    points: '',
-  }),
+  data() {
+    return {
+      days: '',
+      points: '',
+      errors: {},
+    };
+  },
   methods: {
     submitData(e) {
       e.preventDefault();
-      store.dispatch(submitData({
-        days: parseInt(this.days, 10),
-        points: parseInt(this.points, 10),
-      }));
-      this.$router.push('chart');
+      if (this.days && this.points) {
+        store.dispatch(submitData({
+          days: parseInt(this.days, 10),
+          points: parseInt(this.points, 10),
+        }));
+        this.$router.push('chart');
+      } else {
+        this.errors.days = !this.days;
+        this.errors.points = !this.points;
+      }
     },
   },
 };
@@ -90,9 +98,16 @@ export default {
       width: 100px;
       height: 50px;
       outline: none;
+
+      &:disabled {
+        background-color: #DADADA;
+        color: gray;
+        border: 1px solid #DADADA;
+        cursor: not-allowed;
+      }
     }
 
-    button:hover {
+    button:not(:disabled):hover {
       background-color: #FF6833;
     }
 

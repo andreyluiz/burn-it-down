@@ -17,6 +17,13 @@ import ChartList from './ChartList';
 
 export default {
   name: 'chart',
+  beforeMount() {
+    if ((this.optimal && !this.optimal.length) ||
+        (this.remaining && !this.remaining.length) ||
+        (this.realized && !this.realized.length)) {
+      this.$router.push('/');
+    }
+  },
   data() {
     return {
       optimal: this.$select('optimal'),
