@@ -38,6 +38,7 @@ const reducer = duck.createReducer({
         points,
       ]), [points]),
       realized: base,
+      pointsPerDay,
     };
   },
   [SET_POINTS]: (state, { payload }) => {

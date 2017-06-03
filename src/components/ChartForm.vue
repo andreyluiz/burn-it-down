@@ -50,7 +50,6 @@ export default {
   display: flex;
   font-size: 16px;
   color: #2c3e50;
-  margin-right: 12px;
 
   select {
     margin-right: 6px;
