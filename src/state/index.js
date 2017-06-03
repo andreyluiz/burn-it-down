@@ -12,31 +12,32 @@ export const submitData = duck.createAction(SUBMIT_DATA);
 export const setPoints = duck.createAction(SET_POINTS);
 
 const initialState = {
-  optimal: [50, 45, 40, 35, 30, 25, 20, 15, 10, 5, 0],
-  remaining: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
-  realized: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  optimal: [],
+  remaining: [],
+  realized: [],
 };
 
 const reducer = duck.createReducer({
   [SUBMIT_DATA]: (state, { payload }) => {
     const { days } = payload;
     const { points } = payload;
+    const base = new Array(days).fill(0);
     let optimalPoints = points;
     const pointsPerDay = points / days;
-    const optimal = [points];
-    const remaining = [points];
-    const realized = [0];
-    while (optimalPoints > 0) {
-      optimalPoints -= pointsPerDay;
-      optimal.push(optimalPoints);
-      remaining.push(points);
-      realized.push(0);
-    }
     return {
       ...state,
-      optimal,
-      remaining,
-      realized,
+      optimal: base.reduce((optimal) => {
+        optimalPoints -= pointsPerDay;
+        return [
+          ...optimal,
+          optimalPoints,
+        ];
+      }, [points]),
+      remaining: base.reduce(remaining => ([
+        ...remaining,
+        points,
+      ]), [points]),
+      realized: base,
     };
   },
   [SET_POINTS]: (state, { payload }) => {
@@ -48,7 +49,7 @@ const reducer = duck.createReducer({
         return (index > day) ? (value - points) : value;
       }),
       realized: realized.map((value, index) => { // eslint-disable-line arrow-body-style
-        return (index === day) ? points : value;
+        return (index === day) ? (value + points) : value;
       }),
     };
   },
