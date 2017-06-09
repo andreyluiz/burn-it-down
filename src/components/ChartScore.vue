@@ -5,6 +5,10 @@
       <span>{{ score }}</span>
     </div>
     <div class="column">
+      <span title>Health</span>
+      <div :class="['health', health]" />
+    </div>
+    <div class="column">
       <span title>Points per Day</span>
       <span>{{ pointsPerDay }}</span>
     </div>
@@ -27,6 +31,31 @@
           sum += r;
         });
         return sum / this.realized.length;
+      },
+      health() {
+        const realized = this.realized.filter(r => r);
+        let sum = 0;
+        realized.forEach((r) => {
+          sum += r;
+        });
+        if (!sum || !realized.length) return 'poor';
+        const health = sum / realized.length;
+
+        const poor = this.pointsPerDay * 0.3;
+        const bad = this.pointsPerDay * 0.5;
+        const okay = this.pointsPerDay * 0.7;
+        const good = this.pointsPerDay * 0.9;
+
+        if (health <= poor) {
+          return 'poor';
+        } else if (health <= bad && health > poor) {
+          return 'bad';
+        } else if (health <= okay && health > bad) {
+          return 'okay';
+        } else if (health <= good && health > okay) {
+          return 'good';
+        }
+        return 'excelent';
       },
     },
   };
@@ -55,6 +84,34 @@
         font-weight: bold;
         font-size: 14px;
         margin-bottom: 6px;
+      }
+
+      .health {
+        width: 50px;
+        height: 20px;
+        border-radius: 4px;
+        align-self: center;
+        margin-top: 6px;
+
+        &.poor {
+          background-color: #F44336;
+        }
+
+        &.bad {
+          background-color: #FF9800;
+        }
+
+        &.okay {
+          background-color: #FFEB3B;
+        }
+
+        &.good {
+          background-color: #8BC34A;
+        }
+
+        &.excelent {
+          background-color: #4CAF50;
+        }
       }
     }
   }
