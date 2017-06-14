@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Revue from 'revue';
 import { createDuck } from 'redux-duck';
 import { createStore } from 'redux';
+import throttle from 'lodash/throttle';
+import { loadState, saveState } from './localStorage';
 
 const duck = createDuck('root', 'burn-it-down');
 
@@ -56,11 +58,18 @@ const reducer = duck.createReducer({
   },
 }, initialState);
 
+const persistedState = loadState();
+
 /* eslint-disable no-underscore-dangle */
 const reduxStore = createStore(
   reducer,
+  persistedState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 /* eslint-enable */
+
+reduxStore.subscribe(throttle(() => {
+  saveState(reduxStore.getState());
+}, 1000));
 
 export const store = new Revue(Vue, reduxStore);
