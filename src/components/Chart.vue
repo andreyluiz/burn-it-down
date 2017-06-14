@@ -1,6 +1,7 @@
 <template>
   <div id="chart">
     <div class="data">
+      <chart-done />
       <chart-score />
       <chart-form />
       <chart-list />
@@ -13,6 +14,7 @@
 
 <script>
 import Burndown from './Burndown';
+import ChartDone from './ChartDone';
 import ChartScore from './ChartScore';
 import ChartForm from './ChartForm';
 import ChartList from './ChartList';
@@ -63,7 +65,7 @@ export default {
       };
     },
   },
-  components: { Burndown, ChartScore, ChartForm, ChartList },
+  components: { Burndown, ChartDone, ChartScore, ChartForm, ChartList },
 };
 </script>
 
