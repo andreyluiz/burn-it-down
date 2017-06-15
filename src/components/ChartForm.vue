@@ -6,12 +6,13 @@
         {{ `Day ${day + 1}` }}
       </option>
     </select>
-    <input name="points" v-model="points" placeholder="Points spent..." autofocus />
+    <text-input name="points" v-model="points" placeholder="Points spent..." autofocus />
     <button type="submit">Set</button>
   </form>
 </template>
 
 <script>
+import TextInput from './ui/TextInput';
 import { store, setPoints } from '../state';
 
 export default {
@@ -41,6 +42,7 @@ export default {
       this.points = null;
     },
   },
+  components: { TextInput },
 };
 </script>
 
@@ -58,16 +60,6 @@ export default {
     background: transparent;
     border: 1px solid #2c3e50;
     cursor: pointer;
-    border-radius: 4px;
-  }
-
-  input {
-    flex: 1 1 auto;
-    margin: 0 6px;
-    padding: 4px;
-    font: inherit;
-    color: inherit;
-    border: 1px solid #2c3e50;
     border-radius: 4px;
   }
 

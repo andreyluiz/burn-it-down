@@ -9,11 +9,14 @@ const duck = createDuck('root', 'burn-it-down');
 
 const SUBMIT_DATA = duck.defineType('SUBMIT_DATA');
 const SET_POINTS = duck.defineType('SET_POINTS');
+const SET_SPRINT_NAME = duck.defineType('SET_SPRINT_NAME');
 
 export const submitData = duck.createAction(SUBMIT_DATA);
 export const setPoints = duck.createAction(SET_POINTS);
+export const setSprintName = duck.createAction(SET_SPRINT_NAME);
 
 const initialState = {
+  sprintName: '',
   optimal: [],
   remaining: [],
   realized: [],
@@ -56,6 +59,10 @@ const reducer = duck.createReducer({
       }),
     };
   },
+  [SET_SPRINT_NAME]: (state, { payload }) => ({
+    ...state,
+    sprintName: payload,
+  }),
 }, initialState);
 
 const persistedState = loadState();
