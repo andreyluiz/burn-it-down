@@ -7,7 +7,7 @@
       <div class="inputs">
         <div class="form-group">
           <label for="days">Days in Sprint</label>
-          <input name="days" v-model="days" placeholder="e.g 10">
+          <input name="days" v-model="days" placeholder="e.g 10" autofocus>
         </div>
         <div class="separator" />
         <div class="form-group">

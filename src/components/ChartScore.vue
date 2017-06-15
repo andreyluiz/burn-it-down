@@ -2,7 +2,7 @@
   <div id="score">
     <div class="column">
       <span title>Score</span>
-      <span>{{ score.toFixed(2) }}</span>
+      <span>{{ score ? score.toFixed(2) : 0 }}</span>
     </div>
     <div class="column">
       <span title>Health</span>
@@ -10,7 +10,7 @@
     </div>
     <div class="column">
       <span title>Points per Day</span>
-      <span>{{ pointsPerDay.toFixed(2) }}</span>
+      <span>{{ pointsPerDay ? pointsPerDay.toFixed(2) : 0 }}</span>
     </div>
   </div>
 </template>

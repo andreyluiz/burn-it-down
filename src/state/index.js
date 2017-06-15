@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Revue from 'revue';
 import { createDuck } from 'redux-duck';
 import { createStore } from 'redux';
-import throttle from 'lodash/throttle';
+import { throttle, omit } from 'lodash';
 import { loadState, saveState } from './localStorage';
 
 const duck = createDuck('root', 'burn-it-down');
@@ -10,17 +10,23 @@ const duck = createDuck('root', 'burn-it-down');
 const SUBMIT_DATA = duck.defineType('SUBMIT_DATA');
 const SET_POINTS = duck.defineType('SET_POINTS');
 const SET_SPRINT_NAME = duck.defineType('SET_SPRINT_NAME');
+const NEW_SPRINT = duck.defineType('NEW_SPRINT');
 
 export const submitData = duck.createAction(SUBMIT_DATA);
 export const setPoints = duck.createAction(SET_POINTS);
 export const setSprintName = duck.createAction(SET_SPRINT_NAME);
+export const newSprint = duck.createAction(NEW_SPRINT);
 
 const initialState = {
-  sprintName: '',
+  history: {},
+  id: '',
+  name: '',
   optimal: [],
   remaining: [],
   realized: [],
 };
+
+const generateId = () => Math.random().toString(36).substring(5);
 
 const reducer = duck.createReducer({
   [SUBMIT_DATA]: (state, { payload }) => {
@@ -31,6 +37,7 @@ const reducer = duck.createReducer({
     const pointsPerDay = points / days;
     return {
       ...state,
+      id: generateId(),
       optimal: base.reduce((optimal) => {
         optimalPoints -= pointsPerDay;
         return [
@@ -61,7 +68,14 @@ const reducer = duck.createReducer({
   },
   [SET_SPRINT_NAME]: (state, { payload }) => ({
     ...state,
-    sprintName: payload,
+    name: payload,
+  }),
+  [NEW_SPRINT]: state => ({
+    ...initialState,
+    history: {
+      ...state.history,
+      [state.id]: omit(state, 'history'),
+    },
   }),
 }, initialState);
 

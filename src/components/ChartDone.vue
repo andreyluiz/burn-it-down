@@ -16,6 +16,7 @@
 <script>
 import includes from 'lodash/includes';
 import ActionButton from './ui/ActionButton';
+import { store, newSprint } from '../state';
 
 export default {
   name: 'chart-done',
@@ -31,7 +32,8 @@ export default {
   },
   methods: {
     newSprint() {
-      console.log('New Sprint!');
+      this.$router.push('/');
+      store.dispatch(newSprint());
     },
     showStats() {
       console.log('Show Stats!');
