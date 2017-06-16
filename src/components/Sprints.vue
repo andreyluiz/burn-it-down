@@ -4,8 +4,8 @@
     <h2>Burn it Down</h2>
     <p>Track your daily burnt points.</p>
     <h3>History</h3>
-    <p v-if="isEmpty">No sprints to show.</p>
     <div class="table">
+      <p v-if="isEmpty" class="empty">No sprints to show.</p>
       <table v-if="!isEmpty">
         <thead>
           <tr>
@@ -42,10 +42,10 @@ import isEmpty from 'lodash/isEmpty';
 import LinkTo from './ui/LinkTo';
 
 export default {
-  name: 'history',
+  name: 'sprints',
   data() {
     return {
-      history: this.$select('history'),
+      history: this.$select('sprints'),
     };
   },
   computed: {
@@ -63,6 +63,10 @@ export default {
   width: 800px;
   margin: 0 auto 24px auto;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.38);
+
+  .empty {
+    padding-top: 50px;
+  }
 
   table {
     padding: 8px;

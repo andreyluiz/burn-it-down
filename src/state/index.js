@@ -18,7 +18,7 @@ export const setSprintName = duck.createAction(SET_SPRINT_NAME);
 export const newSprint = duck.createAction(NEW_SPRINT);
 
 const initialState = {
-  history: {},
+  sprints: {},
   id: '',
   name: '',
   days: 0,
@@ -76,9 +76,9 @@ const reducer = duck.createReducer({
   }),
   [NEW_SPRINT]: state => ({
     ...initialState,
-    history: {
-      ...state.history,
-      [state.id]: omit(state, 'history'),
+    sprints: {
+      ...state.sprints,
+      [state.id]: omit(state, 'sprints'),
     },
   }),
 }, initialState);
