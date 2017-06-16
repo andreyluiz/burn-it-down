@@ -1,11 +1,11 @@
 <template>
   <div id="chart">
     <div class="data">
-      <chart-done />
-      <chart-score />
-      <chart-name />
-      <chart-form />
-      <chart-list />
+      <sprint-done />
+      <sprint-score />
+      <sprint-name />
+      <sprint-form />
+      <sprint-list />
     </div>
     <div class="burndown">
       <burndown :chartData="chartData" />
@@ -15,11 +15,11 @@
 
 <script>
 import Burndown from './Burndown';
-import ChartDone from './ChartDone';
-import ChartScore from './ChartScore';
-import ChartName from './ChartName';
-import ChartForm from './ChartForm';
-import ChartList from './ChartList';
+import SprintDone from './SprintDone';
+import SprintScore from './SprintScore';
+import SprintName from './SprintName';
+import SprintForm from './SprintForm';
+import SprintList from './SprintList';
 
 export default {
   name: 'chart',
@@ -67,7 +67,7 @@ export default {
       };
     },
   },
-  components: { Burndown, ChartDone, ChartScore, ChartName, ChartForm, ChartList },
+  components: { Burndown, SprintDone, SprintScore, SprintName, SprintForm, SprintList },
 };
 </script>
 

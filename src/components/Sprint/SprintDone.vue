@@ -15,8 +15,8 @@
 
 <script>
 import includes from 'lodash/includes';
-import ActionButton from './ui/ActionButton';
-import { store, newSprint } from '../state';
+import ActionButton from '../ui/ActionButton';
+import { store, newSprint } from '../../state';
 
 export default {
   name: 'chart-done',

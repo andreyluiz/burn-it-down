@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import TextInput from './ui/TextInput';
-import { store, setSprintName } from '../state';
+import TextInput from '../ui/TextInput';
+import { store, setSprintName } from '../../state';
 
 export default {
   name: 'chart-name',

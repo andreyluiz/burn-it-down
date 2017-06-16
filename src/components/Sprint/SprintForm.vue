@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import TextInput from './ui/TextInput';
-import { store, setPoints } from '../state';
+import TextInput from '../ui/TextInput';
+import { store, setPoints } from '../../state';
 
 export default {
   name: 'chart-form',
