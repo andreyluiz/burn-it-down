@@ -21,6 +21,8 @@ const initialState = {
   history: {},
   id: '',
   name: '',
+  days: 0,
+  points: 0,
   optimal: [],
   remaining: [],
   realized: [],
@@ -38,6 +40,9 @@ const reducer = duck.createReducer({
     return {
       ...state,
       id: generateId(),
+      days,
+      points,
+      pointsPerDay,
       optimal: base.reduce((optimal) => {
         optimalPoints -= pointsPerDay;
         return [
@@ -50,7 +55,6 @@ const reducer = duck.createReducer({
         points,
       ]), [points]),
       realized: base,
-      pointsPerDay,
     };
   },
   [SET_POINTS]: (state, { payload }) => {

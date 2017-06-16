@@ -19,10 +19,12 @@
         <button :disabled="!days || !points" type="submit">Go!</button>
       </div>
     </form>
+    <link-to href="#/sprints">Show completed sprints</link-to>
   </div>
 </template>
 
 <script>
+import LinkTo from './ui/LinkTo';
 import { store, submitData } from '../state';
 
 export default {
@@ -49,6 +51,7 @@ export default {
       }
     },
   },
+  components: { LinkTo },
 };
 </script>
 
@@ -89,6 +92,7 @@ export default {
     margin-top: 24px;
 
     button {
+      margin-bottom: 24px;
       font-size: 24px;
       background-color: #FF5722;
       border: 1px solid #FF5722;
