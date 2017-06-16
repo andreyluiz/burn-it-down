@@ -6,7 +6,7 @@
         {{ `Day ${day + 1}` }}
       </option>
     </select>
-    <text-input name="points" v-model="points" placeholder="Points spent..." autofocus />
+    <input name="points" v-model="points" placeholder="Points spent..." autofocus />
     <button type="submit">Set</button>
   </form>
 </template>
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     days() {
-      return this.optimal.map((o, index) => index);
+      return this.optimal.map((o, index) => index).slice(0, this.optimal.length - 1);
     },
   },
   methods: {
@@ -36,7 +36,7 @@ export default {
         day: parseInt(this.day, 10),
         points: parseInt(this.points, 10) || 0,
       }));
-      if (this.day < (this.optimal.length - 1)) {
+      if (this.day < (this.optimal.length - 2)) {
         this.day = this.day + 1;
       }
       this.points = null;
@@ -81,6 +81,15 @@ export default {
 
   button:active {
     background-color: #EE4611;
+  }
+
+  input {
+    flex: 1 1 auto;
+    padding: 4px;
+    font: inherit;
+    color: inherit;
+    border: 1px solid #2c3e50;
+    border-radius: 4px;
   }
 }
 </style>
