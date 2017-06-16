@@ -15,7 +15,7 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/chart',
+      path: '/sprint/:id',
       name: 'Sprint',
       component: Sprint,
     },

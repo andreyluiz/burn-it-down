@@ -34,6 +34,7 @@ export default {
       days: '',
       points: '',
       errors: {},
+      id: this.$select('id'),
     };
   },
   methods: {
@@ -44,7 +45,8 @@ export default {
           days: parseInt(this.days, 10),
           points: parseInt(this.points, 10),
         }));
-        this.$router.push('chart');
+        console.log();
+        this.$router.push(`sprint/${this.id}`);
       } else {
         this.errors.days = !this.days;
         this.errors.points = !this.points;
