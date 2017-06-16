@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Form from '@/components/Form';
+import Home from '@/components/Home';
 import Sprint from '@/components/Sprint';
 import Sprints from '@/components/Sprints';
 
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Form,
+      name: 'Home',
+      component: Home,
     },
     {
       path: '/chart',
