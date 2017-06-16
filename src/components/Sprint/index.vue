@@ -20,10 +20,14 @@ import SprintScore from './SprintScore';
 import SprintName from './SprintName';
 import SprintForm from './SprintForm';
 import SprintList from './SprintList';
+import { store, sprintById } from '../../state';
 
 export default {
   name: 'chart',
   beforeMount() {
+    const sprintId = this.$router.currentRoute.params.id;
+    store.dispatch(sprintById(sprintId));
+
     if ((this.optimal && !this.optimal.length) ||
         (this.remaining && !this.remaining.length) ||
         (this.realized && !this.realized.length)) {

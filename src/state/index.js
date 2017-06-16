@@ -11,11 +11,13 @@ const SUBMIT_DATA = duck.defineType('SUBMIT_DATA');
 const SET_POINTS = duck.defineType('SET_POINTS');
 const SET_SPRINT_NAME = duck.defineType('SET_SPRINT_NAME');
 const NEW_SPRINT = duck.defineType('NEW_SPRINT');
+const SPRINT_BY_ID = duck.defineType('SPRINT_BY_ID');
 
 export const submitData = duck.createAction(SUBMIT_DATA);
 export const setPoints = duck.createAction(SET_POINTS);
 export const setSprintName = duck.createAction(SET_SPRINT_NAME);
 export const newSprint = duck.createAction(NEW_SPRINT);
+export const sprintById = duck.createAction(SPRINT_BY_ID);
 
 const initialState = {
   sprints: {},
@@ -81,6 +83,15 @@ const reducer = duck.createReducer({
       [state.id]: omit(state, 'sprints'),
     },
   }),
+  [SPRINT_BY_ID]: (state, { payload }) => {
+    if (state.sprints[payload]) {
+      return {
+        sprints: state.sprints,
+        ...state.sprints[payload],
+      };
+    }
+    return state;
+  },
 }, initialState);
 
 const persistedState = loadState();
