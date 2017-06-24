@@ -2,7 +2,7 @@
 
 > Track your burndown daily.
 
-https://andreyluiz.github.io/burn-it-down/app
+https://andreyluiz.github.io/burn-it-down
 
 ## Build Setup
 
