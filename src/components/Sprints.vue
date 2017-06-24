@@ -33,7 +33,7 @@
         </tbody>
       </table>
     </div>
-    <link-to href="/">Go back</link-to>
+    <link-to href="#/">Go back</link-to>
   </div>
 </template>
 
