@@ -26,14 +26,14 @@
             <td class="col-right">{{ sprint.days }}</td>
             <td class="col-right">{{ sprint.points }}</td>
             <td class="col-right">{{ sprint.pointsPerDay.toFixed(2) }}</td>
-            <td><link-to :href="`#/sprint/${sprint.id}`">View</link-to></td>
+            <td><link-to :href="`/sprint/${sprint.id}`">View</link-to></td>
             <td><link-to href="#">Stats</link-to></td>
             <td><link-to href="#" @click="deleteSprint.bind(this, sprint.id)">Delete</link-to></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <link-to href="#/">Go back</link-to>
+    <link-to href="/">Go back</link-to>
   </div>
 </template>
 

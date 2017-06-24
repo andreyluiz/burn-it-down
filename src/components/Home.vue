@@ -19,7 +19,7 @@
         <button :disabled="!days || !points" type="submit">Go!</button>
       </div>
     </form>
-    <link-to href="#/sprints">Show completed sprints</link-to>
+    <link-to href="/sprints">Show completed sprints</link-to>
   </div>
 </template>
 
