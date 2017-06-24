@@ -1,10 +1,12 @@
 # burn-it-down
 
-> Track your burndown daily.
+> Track your daily burnt points.
 
 https://andreyluiz.github.io/burn-it-down
 
-## Build Setup
+## Contribute
+
+If you feel inspired and want to contribute with the project, be sure to file your bug or suggestion, or create a PR.
 
 ``` bash
 # install dependencies
