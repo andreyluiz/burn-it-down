@@ -25,10 +25,10 @@
             <td class="col-left">{{ sprint.name }}</td>
             <td class="col-right">{{ sprint.days }}</td>
             <td class="col-right">{{ sprint.points }}</td>
-            <td class="col-right">{{ sprint.pointsPerDay }}</td>
-            <td><link-to href="#">View</link-to></td>
+            <td class="col-right">{{ sprint.pointsPerDay.toFixed(2) }}</td>
+            <td><link-to :href="`#/sprint/${sprint.id}`">View</link-to></td>
             <td><link-to href="#">Stats</link-to></td>
-            <td><link-to href="#">Delete</link-to></td>
+            <td><link-to href="#" @click="deleteSprint.bind(this, sprint.id)">Delete</link-to></td>
           </tr>
         </tbody>
       </table>
@@ -51,6 +51,11 @@ export default {
   computed: {
     isEmpty() {
       return isEmpty(this.history);
+    },
+  },
+  methods: {
+    deleteSprint(sprintId) {
+      console.log(sprintId);
     },
   },
   components: { LinkTo },

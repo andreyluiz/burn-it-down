@@ -33,6 +33,7 @@
         return sum / this.realized.length;
       },
       health() {
+        // FIXME move all of this to selectors
         const realized = this.realized.filter(r => r);
         let sum = 0;
         realized.forEach((r) => {
