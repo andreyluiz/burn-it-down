@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "chart.js": "^2.5.0",
-    "lodash": "4.17.4",
+    "lodash": "4.17.19",
     "redux": "^3.6.0",
     "redux-duck": "^1.0.2",
     "revue": "^3.0.0",
